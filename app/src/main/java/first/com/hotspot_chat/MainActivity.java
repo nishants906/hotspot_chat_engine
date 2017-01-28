@@ -10,6 +10,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ToggleButton;
@@ -20,11 +21,10 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class
+MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     ToggleButton togglehotspot;
-    WifiManager wifi;
-    ListView listview;
     Button togglewifi;
     WifiManager wifiManager;
     WifiReceiver receiverWifi;
@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     List<String> listOfProvider;
     ListAdapter adapter;
     ListView listViwProvider;
+
+    public static final String IP_SERVER = "192.168.49.1";
+    public static int PORT = 8988;
+    private static boolean server_running = false;
 
 
     @Override
@@ -65,6 +69,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             togglewifi.setText("ON");
             scaning();
         }
+        listViwProvider.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                String itemValue = (String) listViwProvider.getItemAtPosition(position);
+
+
+
+
+
+            }
+        });
     }
 
     private void scaning() {
